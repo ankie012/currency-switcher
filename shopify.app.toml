@@ -1,0 +1,37 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "18b76d78315aacd011bdaf526f519b90"
+application_url = "https://klein-pin-pill-pete.trycloudflare.com"
+embedded = true
+name = "currency-switcher"
+handle = "currency-switcher-17"
+
+[build]
+include_config_on_deploy = true
+dev_store_url = "teststorecvd.myshopify.com"
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://klein-pin-pill-pete.trycloudflare.com/auth/callback",
+  "https://klein-pin-pill-pete.trycloudflare.com/auth/shopify/callback",
+  "https://klein-pin-pill-pete.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
